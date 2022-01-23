@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+    <title>Leaderboard</title>
 <script defer src="main.js"></script></head>
 <body>
-    <h1>Leaderboard</h1>
-</body>
+    <header>
+      <h1>Leaderboard</h1>
+    </header>
+    <section class="main-section">
+      <div class="show-score">
+        <div class="titles">
+          <h2>Recent Score</h2>
+          <button type="button" class="refresh-btn">Refresh</button>
+        </div>
+        <ul class="score-list"></ul>
+      </div>
+      <div class="add-score">
+        <h2>Add your Score</h2>
+        <form action="#" id="submit">
+          <input type="text" id="fullname" placeholder="Your name">
+          <input type="number" id="score" placeholder="Your Score">
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </section>
+  </body>
 </html>
