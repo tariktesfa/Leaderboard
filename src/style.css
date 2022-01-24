@@ -1,0 +1,46 @@
+h1 {
+  margin: 0;
+}
+
+.main-section {
+  display: flex;
+}
+
+.show-score {
+  display: flex;
+  gap: 20px;
+  margin-left: 30px;
+  width: 60%;
+}
+
+.titles {
+  display: flex;
+  gap: 30px;
+}
+
+.refresh-btn {
+  margin-top: 45px;
+}
+
+.add-score {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+}
+
+h2 {
+  margin: 40px 0 20px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  width: 70px;
+  height: 20px;
+  box-shadow: 2px 2px #000;
+  background-color: #fff;
+}
