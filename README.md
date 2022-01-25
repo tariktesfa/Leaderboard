@@ -9,7 +9,7 @@ This is a leaderboard website that displays scores submitted by different player
 
 ## Live Demo
 
-[Live demo](https://tariktesfa.github.io/Leaderboard)
+[Live demo](https://tariktesfa.github.io/Leaderboard/dist)
 
 ## Built With
 
