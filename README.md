@@ -6,11 +6,6 @@ This is a leaderboard website that displays scores submitted by different player
 
 ![leaderboard](https://user-images.githubusercontent.com/38283436/150935924-f161a79e-5c5a-470b-bbe2-b60462f1242b.png)
 
-
-## Live Demo
-
-[Live demo](https://tariktesfa.github.io/Leaderboard/dist)
-
 ## Built With
 
 - HTML
