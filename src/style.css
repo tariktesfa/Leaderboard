@@ -16,7 +16,8 @@ h2 {
 
 .btn {
   height: 25px;
-  box-shadow: 2px 2px#000;
+  background-color: #fff;
+  box-shadow: 2px 2px #000;
 }
 
 .refresh {
@@ -38,10 +39,6 @@ h2 {
 
 .submit {
   justify-self: end;
-}
-
-.btn {
-  background-color: #fff;
 }
 
 .scores-list {

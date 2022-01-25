@@ -12,7 +12,7 @@ class Leaderboard {
       return true;
     }
     const datas = ((window.localStorage.getItem('scores') !== null) ? JSON.parse(window.localStorage.getItem('scores')) : []);
-     return datas;
+    return datas;
   }
 
   static add = (scoreData) => {
