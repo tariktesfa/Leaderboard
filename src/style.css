@@ -1,0 +1,57 @@
+.main-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5%;
+  margin: auto;
+}
+
+.display .titles {
+  display: flex;
+  justify-content: space-between;
+}
+
+h2 {
+  margin: 30px 20px;
+}
+
+.btn {
+  height: 25px;
+  background-color: #fff;
+  box-shadow: 2px 2px #000;
+}
+
+.refresh {
+  margin: 30px;
+}
+
+.score-form form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-right: 30px;
+}
+
+.score-form form input {
+  height: 30px;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.submit {
+  justify-self: end;
+}
+
+.scores-list {
+  padding: 0;
+  list-style-type: none;
+  border: 1px solid #000;
+  margin: 0 30px;
+}
+
+.scores-list li {
+  padding: 10px;
+}
+
+.scores-list li:nth-child(2n) {
+  background-color: #f0eeee;
+}
