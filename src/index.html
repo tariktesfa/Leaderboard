@@ -11,21 +11,24 @@
       <h1>Leaderboard</h1>
     </header>
     <section class="main-section">
-      <div class="show-score">
+      <div class="display">
         <div class="titles">
           <h2>Recent Scores</h2>
-          <button type="button" class="refresh-btn">Refresh</button>
+          <button type="button" class="btn refresh">Refresh</button>
         </div>
-        <ul class="score-list"></ul>
+        <ul class="scores-list">
+          
+        </ul>
       </div>
-      <div class="add-score">
+      <div class="score-form">
         <h2>Add your Score</h2>
-        <form action="#" class="form" id="submit">
+        <form action="#" id="submit-data">
           <input type="text" id="fullname" placeholder="Your name">
           <input type="number" id="score" placeholder="Your Score">
-          <button type="submit" class="submit-btn">Submit</button>
+          <button type="submit" class="btn submit">Submit</button>
         </form>
       </div>
     </section>
+    <script type="module" src="index.js"></script>
   </body>
 </html>
