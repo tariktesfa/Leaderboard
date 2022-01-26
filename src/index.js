@@ -13,6 +13,6 @@ document.querySelector('#submit-data').addEventListener('submit', (e) => {
   document.querySelector('#score').value = '';
 });
 
-document.querySelector('.form').addEventListener('click', () => {
+document.querySelector('.refresh').addEventListener('click', () => {
   Leaderboard.load();
 });
