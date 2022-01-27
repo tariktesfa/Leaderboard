@@ -16,10 +16,9 @@ class Leaderboard {
         },
         body: JSON.stringify(scoreData),
       };
-      const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores', requestOptions);
-      return request;
+      await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores', requestOptions);
     }
-    if (request.status === 201) {
+    else {
       this.load();
     }
   }
