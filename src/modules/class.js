@@ -1,16 +1,16 @@
 class Leaderboard {
-  constructor(playerName, score) {
-    this.playerName = playerName;
+  constructor(user, score) {
+    this.user = user;
     this.score = score;
   }
 
   static list = document.querySelector('.scores-list');
 
-  static gameId = 'SX8xrcRek3NXTGVgvB61';
+  // static gameId = 'Vx0jHXdImQzjEt7NdS5l';
 
   static add = async (scoreData) => {
     document.querySelector('.submit');
-    if (scoreData.playerName !== '') {
+    if (scoreData.user !== '') {
       const requestOptions = {
         method: 'POST',
         headers: {
@@ -18,7 +18,7 @@ class Leaderboard {
         },
         body: JSON.stringify(scoreData),
       };
-      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${this.gameId}/scores`, requestOptions);
+      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores`, requestOptions);
       }
       if (request.status === 201) {
         this.load();
@@ -29,12 +29,12 @@ class Leaderboard {
     let scores = '';
     this.list.innerHTML = '';
     if (navigator.onLine) {
-      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${this.gameId}/scores`, { method: 'GET' });
+      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores`, { method: 'GET' });
       const { result } = await request.json();
       if (result.length) {
         result.sort((a, b) => parseFloat(b.score) - parseFloat(a.score)).forEach((score) => {
           scores += `
-          <li>${result.playerName} :  ${result.score}</span></li>
+          <li>${score.user} :  ${score.score}</li>
         `;
         });
         this.list.innerHTML = scores;
