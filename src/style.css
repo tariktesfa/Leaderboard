@@ -1,8 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap');
+
+* {
+  margin: 0;
+  top: 0;
+}
+
+body {
+  background-color: rgb(251, 252, 253);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+header {
+  background-color: blue;
+}
+
+h1 {
+  margin-left: 30px;
+  color: rgb(245, 236, 236);
+  padding: 5px;
+  font-weight: bolder;
+}
+
 .main-section {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 5%;
-  margin: auto;
+  margin-top: -50px;
 }
 
 .display .titles {
@@ -10,18 +33,28 @@
   justify-content: space-between;
 }
 
-h2 {
-  margin: 30px 20px;
+.display {
+  margin: 50px;
 }
 
-.btn {
-  height: 25px;
-  background-color: #fff;
-  box-shadow: 2px 2px #000;
+h2 {
+  margin: 30px 30px;
+}
+
+.score-form {
+  margin-top: 50px;
+}
+
+.score-form h2 {
+  margin-left: 0;
 }
 
 .refresh {
   margin: 30px;
+  border: none;
+  background-color: blueviolet;
+  color: #fff;
+  border-radius: 5px;
 }
 
 .score-form form {
@@ -39,13 +72,20 @@ h2 {
 
 .submit {
   justify-self: end;
+  background-color: blue;
+  color: #fff;
+  text-align: center;
+  border: none;
+  height: 25px;
+  border-radius: 5px;
 }
 
 .scores-list {
   padding: 0;
   list-style-type: none;
-  border: 1px solid #000;
+  border: 1px solid gray;
   margin: 0 30px;
+  border-radius: 5px;
 }
 
 .scores-list li {
@@ -54,4 +94,11 @@ h2 {
 
 .scores-list li:nth-child(2n) {
   background-color: #f0eeee;
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.562);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
 }
