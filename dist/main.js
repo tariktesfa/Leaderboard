@@ -10,52 +10,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 class Leaderboard {
-  constructor(user, score) {
-    this.user = user;
+  constructor(playerName, score) {
+    this.playerName = playerName;
     this.score = score;
   }
 
   static list = document.querySelector('.scores-list');
 
-  static db = (scoreObj) => {
-    if (scoreObj) {
-      window.localStorage.setItem('scores', JSON.stringify(scoreObj));
-      return true;
-    }
-    const datas = ((window.localStorage.getItem('scores') !== null) ? JSON.parse(window.localStorage.getItem('scores')) : []);
-     return datas;
-  }
+  static gameId = 'SX8xrcRek3NXTGVgvB61';
 
-  static add = (scoreData) => {
-    if (scoreData.user !== '') {
-      if (this.db().length === 0) {
-        document.querySelector('.no-score').remove();
+  static add = async (scoreData) => {
+    document.querySelector('.submit');
+    if (scoreData.playerName !== '') {
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(scoreData),
+      };
+      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${this.gameId}/scores`, requestOptions);
       }
-      const store = Leaderboard.db();
-      store.push(scoreData);
-      this.db(store);
-      this.load();
+      if (request.status === 201) {
+        this.load();
+      }
     }
-  }
 
-  static load = () => {
+  static load = async () => {
+    let scores = '';
     this.list.innerHTML = '';
-    if (this.db().length) {
-      this.db().forEach((result) => {
-        this.append(result);
-      });
-    } else {
-      this.list.innerHTML += `
+    if (navigator.onLine) {
+      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${this.gameId}/scores`, { method: 'GET' });
+      const { result } = await request.json();
+      if (result.length) {
+        result.sort((a, b) => parseFloat(b.score) - parseFloat(a.score)).forEach((score) => {
+          scores += `
+          <li>${result.playerName} :  ${result.score}</span></li>
+        `;
+        });
+        this.list.innerHTML = scores;
+      } else {
+        this.list.innerHTML += `
         <li class="no-score">No Data to Display</li>
       `;
+      }
     }
-  }
-
-  static append = (result) => {
-    this.list.innerHTML += `
-      <li>${result.user} :  ${result.score}</span></li>
-    `;
-  }
+ }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Leaderboard);
 
@@ -408,7 +408,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".main-section {\r\n  display: grid;\r\n  grid-template-columns: 2fr 1fr;\r\n  gap: 5%;\r\n  margin: auto;\r\n}\r\n\r\n.display .titles {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\nh2 {\r\n  margin: 30px 20px;\r\n}\r\n\r\n.btn {\r\n  height: 25px;\r\n  box-shadow: 2px 2px#000;\r\n}\r\n\r\n.refresh {\r\n  margin: 30px;\r\n}\r\n\r\n.score-form form {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  gap: 10px;\r\n  margin-right: 30px;\r\n}\r\n\r\n.score-form form input {\r\n  height: 30px;\r\n  font-size: 14px;\r\n  padding: 0 10px;\r\n}\r\n\r\n.submit {\r\n  justify-self: end;\r\n}\r\n\r\n.btn {\r\n  background-color: #fff;\r\n}\r\n\r\n.scores-list {\r\n  padding: 0;\r\n  list-style-type: none;\r\n  border: 1px solid #000;\r\n  margin: 0 30px;\r\n}\r\n\r\n.scores-list li {\r\n  padding: 10px;\r\n}\r\n\r\n.scores-list li:nth-child(2n) {\r\n  background-color: #f0eeee;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".main-section {\r\n  display: grid;\r\n  grid-template-columns: 2fr 1fr;\r\n  gap: 5%;\r\n  margin: auto;\r\n}\r\n\r\n.display .titles {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\nh2 {\r\n  margin: 30px 20px;\r\n}\r\n\r\n.btn {\r\n  height: 25px;\r\n  background-color: #fff;\r\n  box-shadow: 2px 2px #000;\r\n}\r\n\r\n.refresh {\r\n  margin: 30px;\r\n}\r\n\r\n.score-form form {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  gap: 10px;\r\n  margin-right: 30px;\r\n}\r\n\r\n.score-form form input {\r\n  height: 30px;\r\n  font-size: 14px;\r\n  padding: 0 10px;\r\n}\r\n\r\n.submit {\r\n  justify-self: end;\r\n}\r\n\r\n.scores-list {\r\n  padding: 0;\r\n  list-style-type: none;\r\n  border: 1px solid #000;\r\n  margin: 0 30px;\r\n}\r\n\r\n.scores-list li {\r\n  padding: 10px;\r\n}\r\n\r\n.scores-list li:nth-child(2n) {\r\n  background-color: #f0eeee;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -620,7 +620,7 @@ document.querySelector('#submit-data').addEventListener('submit', (e) => {
   document.querySelector('#score').value = '';
 });
 
-document.querySelector('.form').addEventListener('click', () => {
+document.querySelector('.refresh').addEventListener('click', () => {
   _modules_class_js__WEBPACK_IMPORTED_MODULE_0__["default"].load();
 });
 })();

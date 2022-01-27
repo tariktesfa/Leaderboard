@@ -1,49 +1,45 @@
 class Leaderboard {
-  constructor(playerName, score) {
-    this.playerName = playerName;
+  constructor(user, score) {
+    this.user = user;
     this.score = score;
   }
 
   static list = document.querySelector('.scores-list');
 
-  static data = (scoreObj) => {
-    if (scoreObj) {
-      window.localStorage.setItem('scores', JSON.stringify(scoreObj));
-      return true;
-    }
-    const datas = ((window.localStorage.getItem('scores') !== null) ? JSON.parse(window.localStorage.getItem('scores')) : []);
-    return datas;
-  }
-
-  static add = (scoreData) => {
+  static add = async (scoreData) => {
+    document.querySelector('.submit');
     if (scoreData.user !== '') {
-      if (this.data().length === 0) {
-        document.querySelector('.no-score').remove();
-      }
-      const store = Leaderboard.data();
-      store.push(scoreData);
-      this.data(store);
-      this.load();
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(scoreData),
+      };
+      await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores', requestOptions);
     }
+    this.load();
   }
 
-  static load = () => {
+  static load = async () => {
+    let scores = '';
     this.list.innerHTML = '';
-    if (this.data().length) {
-      this.data().forEach((result) => {
-        this.append(result);
-      });
-    } else {
-      this.list.innerHTML += `
+    if (navigator.onLine) {
+      const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores', { method: 'GET' });
+      const { result } = await request.json();
+      if (result.length) {
+        result.sort((a, b) => parseFloat(b.score) - parseFloat(a.score)).forEach((score) => {
+          scores += `
+          <li>${score.user} :  ${score.score}</li>
+        `;
+        });
+        this.list.innerHTML = scores;
+      } else {
+        this.list.innerHTML += `
         <li class="no-score">No Data to Display</li>
       `;
+      }
     }
-  }
-
-  static append = (result) => {
-    this.list.innerHTML += `
-      <li>${result.playerName} :  ${result.score}</span></li>
-    `;
   }
 }
 export default Leaderboard;
