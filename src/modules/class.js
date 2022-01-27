@@ -6,8 +6,6 @@ class Leaderboard {
 
   static list = document.querySelector('.scores-list');
 
-  // static gameId = 'Vx0jHXdImQzjEt7NdS5l';
-
   static add = async (scoreData) => {
     document.querySelector('.submit');
     if (scoreData.user !== '') {
@@ -18,18 +16,18 @@ class Leaderboard {
         },
         body: JSON.stringify(scoreData),
       };
-      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores`, requestOptions);
-      }
-      if (request.status === 201) {
-        this.load();
-      }
+      const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores', requestOptions);
     }
+    if (request.status === 201) {
+      this.load();
+    }
+  }
 
   static load = async () => {
     let scores = '';
     this.list.innerHTML = '';
     if (navigator.onLine) {
-      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores`, { method: 'GET' });
+      const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores', { method: 'GET' });
       const { result } = await request.json();
       if (result.length) {
         result.sort((a, b) => parseFloat(b.score) - parseFloat(a.score)).forEach((score) => {
@@ -44,6 +42,6 @@ class Leaderboard {
       `;
       }
     }
- }
+  }
 }
 export default Leaderboard;
