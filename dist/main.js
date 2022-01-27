@@ -10,18 +10,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 class Leaderboard {
-  constructor(playerName, score) {
-    this.playerName = playerName;
+  constructor(user, score) {
+    this.user = user;
     this.score = score;
   }
 
   static list = document.querySelector('.scores-list');
 
-  static gameId = 'SX8xrcRek3NXTGVgvB61';
-
   static add = async (scoreData) => {
     document.querySelector('.submit');
-    if (scoreData.playerName !== '') {
+    if (scoreData.user !== '') {
       const requestOptions = {
         method: 'POST',
         headers: {
@@ -29,23 +27,21 @@ class Leaderboard {
         },
         body: JSON.stringify(scoreData),
       };
-      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${this.gameId}/scores`, requestOptions);
-      }
-      if (request.status === 201) {
-        this.load();
-      }
+      await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores', requestOptions);
     }
+    this.load();
+  }
 
   static load = async () => {
     let scores = '';
     this.list.innerHTML = '';
     if (navigator.onLine) {
-      const request = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${this.gameId}/scores`, { method: 'GET' });
+      const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vx0jHXdImQzjEt7NdS5l/scores', { method: 'GET' });
       const { result } = await request.json();
       if (result.length) {
         result.sort((a, b) => parseFloat(b.score) - parseFloat(a.score)).forEach((score) => {
           scores += `
-          <li>${result.playerName} :  ${result.score}</span></li>
+          <li>${score.user} :  ${score.score}</li>
         `;
         });
         this.list.innerHTML = scores;
@@ -55,7 +51,7 @@ class Leaderboard {
       `;
       }
     }
- }
+  }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Leaderboard);
 
@@ -407,8 +403,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".main-section {\r\n  display: grid;\r\n  grid-template-columns: 2fr 1fr;\r\n  gap: 5%;\r\n  margin: auto;\r\n}\r\n\r\n.display .titles {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\nh2 {\r\n  margin: 30px 20px;\r\n}\r\n\r\n.btn {\r\n  height: 25px;\r\n  background-color: #fff;\r\n  box-shadow: 2px 2px #000;\r\n}\r\n\r\n.refresh {\r\n  margin: 30px;\r\n}\r\n\r\n.score-form form {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  gap: 10px;\r\n  margin-right: 30px;\r\n}\r\n\r\n.score-form form input {\r\n  height: 30px;\r\n  font-size: 14px;\r\n  padding: 0 10px;\r\n}\r\n\r\n.submit {\r\n  justify-self: end;\r\n}\r\n\r\n.scores-list {\r\n  padding: 0;\r\n  list-style-type: none;\r\n  border: 1px solid #000;\r\n  margin: 0 30px;\r\n}\r\n\r\n.scores-list li {\r\n  padding: 10px;\r\n}\r\n\r\n.scores-list li:nth-child(2n) {\r\n  background-color: #f0eeee;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  margin: 0;\r\n  top: 0;\r\n}\r\n\r\nbody {\r\n  background-color: rgb(251, 252, 253);\r\n  font-family: 'Cormorant Garamond', serif;\r\n}\r\n\r\nheader {\r\n  background-color: blue;\r\n}\r\n\r\nh1 {\r\n  margin-left: 30px;\r\n  color: rgb(245, 236, 236);\r\n  padding: 5px;\r\n  font-weight: bolder;\r\n}\r\n\r\n.main-section {\r\n  display: grid;\r\n  grid-template-columns: 2fr 1fr;\r\n  gap: 5%;\r\n  margin-top: -50px;\r\n}\r\n\r\n.display .titles {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\n.display {\r\n  margin: 50px;\r\n}\r\n\r\nh2 {\r\n  margin: 30px 30px;\r\n}\r\n\r\n.score-form {\r\n  margin-top: 50px;\r\n}\r\n\r\n.score-form h2 {\r\n  margin-left: 0;\r\n}\r\n\r\n.refresh {\r\n  margin: 30px;\r\n  border: none;\r\n  background-color: blueviolet;\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.score-form form {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  gap: 10px;\r\n  margin-right: 30px;\r\n}\r\n\r\n.score-form form input {\r\n  height: 30px;\r\n  font-size: 14px;\r\n  padding: 0 10px;\r\n}\r\n\r\n.submit {\r\n  justify-self: end;\r\n  background-color: blue;\r\n  color: #fff;\r\n  text-align: center;\r\n  border: none;\r\n  height: 25px;\r\n  border-radius: 5px;\r\n}\r\n\r\n.scores-list {\r\n  padding: 0;\r\n  list-style-type: none;\r\n  border: 1px solid gray;\r\n  margin: 0 30px;\r\n  border-radius: 5px;\r\n}\r\n\r\n.scores-list li {\r\n  padding: 10px;\r\n}\r\n\r\n.scores-list li:nth-child(2n) {\r\n  background-color: #f0eeee;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -608,13 +605,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(() => {
-  _modules_class_js__WEBPACK_IMPORTED_MODULE_0__["default"].load();
-})();
+_modules_class_js__WEBPACK_IMPORTED_MODULE_0__["default"].load();
+
+const name = document.querySelector('#fullname');
+const playerScore = document.querySelector('#score');
 
 document.querySelector('#submit-data').addEventListener('submit', (e) => {
   e.preventDefault();
-  const score = new _modules_class_js__WEBPACK_IMPORTED_MODULE_0__["default"](document.querySelector('#fullname').value, document.querySelector('#score').value);
+  const score = new _modules_class_js__WEBPACK_IMPORTED_MODULE_0__["default"](name.value, playerScore.value);
   _modules_class_js__WEBPACK_IMPORTED_MODULE_0__["default"].add(score);
   document.querySelector('#fullname').value = '';
   document.querySelector('#score').value = '';
