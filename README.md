@@ -4,7 +4,7 @@ This is a leaderboard website that displays scores submitted by different player
 
 ## Screenshot
 
-![leaderboard](https://user-images.githubusercontent.com/38283436/150935924-f161a79e-5c5a-470b-bbe2-b60462f1242b.png)
+![leaderboard](https://user-images.githubusercontent.com/38283436/151340001-1c340c32-d0ed-450f-a6e0-76966bec9866.png)
 
 ## Built With
 
