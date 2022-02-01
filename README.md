@@ -13,6 +13,10 @@ This is a leaderboard website that displays scores submitted by different player
 - JavaScript
 - Webpack
 
+## Live Demo
+
+[Live Demo](https://tariktesfa.github.io/Leaderboard/dist/)
+
 ## Getting Started
 
 - Install Node.js
